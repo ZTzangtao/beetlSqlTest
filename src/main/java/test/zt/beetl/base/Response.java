@@ -44,6 +44,10 @@ public class Response {
         return new Response(200, "", details);
     }
 
+    public static Response success(String message, Object details) {
+        return new Response(200, message, details);
+    }
+
     public static Response successMessage(String message) {
         return new Response(200, message, "");
     }
