@@ -1,10 +1,7 @@
 package test.zt.beetl.web;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import test.zt.beetl.base.Response;
 import test.zt.beetl.entity.User;
 import test.zt.beetl.service.UserService;
@@ -23,6 +20,12 @@ public class BeetlSqlController {
     @PostMapping("/user")
     public Response createUser(@RequestBody User user){
         return userService.createUser(user);
+    }
+
+    @GetMapping("user")
+    public Response getUserByName(@RequestParam(value = "name") String name,
+                                  @RequestParam(required = false,value = "age") Integer age){
+        return userService.getUserByName(name,age);
     }
 
 }
