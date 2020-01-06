@@ -1,7 +1,11 @@
 package test.zt.beetl.service.impl;
 
+import org.beetl.sql.core.SQLManager;
 import org.beetl.sql.core.db.KeyHolder;
+import org.beetl.sql.core.query.LambdaQuery;
+import org.beetl.sql.core.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
 import test.zt.beetl.base.Response;
@@ -20,8 +24,14 @@ import java.util.List;
  */
 @Service
 public class UserServiceImpl implements UserService {
+
     @Autowired
     UserDao userDao;
+
+    @Autowired
+    @Qualifier("aSqlManagerFactoryBean")
+    SQLManager sqlManager;
+
 
     @Override
     public Response createUser(User user) {
@@ -34,4 +44,15 @@ public class UserServiceImpl implements UserService {
         KeyHolder keyHolder = userDao.insertReturnKey(user);
         return Response.success("新增成功", keyHolder.getInt());
     }
-}
+
+    @Override
+    public Response getUserByName(String name,Integer age) {
+            LambdaQuery<User> query = sqlManager.lambdaQuery(User.class);
+            List<User> userList = query.andLike(User::getName,"%"+name+"%")
+                    .andEq(User::getDelFlag,0)
+                    .andEq(User::getAge,Query.filterEmpty(age))
+                    .select();
+            return Response.success(userList);
+        }
+
+    }

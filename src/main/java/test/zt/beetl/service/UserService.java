@@ -16,4 +16,13 @@ public interface UserService {
      * @return
      */
     Response createUser(User user);
+
+    /**
+     * 根据name模糊查询
+     *
+     * @param name
+     * @param age
+     * @return
+     */
+    Response getUserByName(String name,Integer age);
 }
