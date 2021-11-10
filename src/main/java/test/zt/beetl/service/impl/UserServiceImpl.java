@@ -26,26 +26,13 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public Response createUser(User user) {
-//        //名字不能一样
-//        List<User> userList  = userDao.template(User.builder().name(user.getName()).build());
-//        if (!CollectionUtils.isEmpty(userList)){
-//            return Response.error("名字重复");
-//        }
-////        user.setCreateDate(new Date());
-//        KeyHolder keyHolder = userDao.insertReturnKey(user);
-//        return Response.success("新增成功", keyHolder.getInt());
         return null;
     }
 
     @Override
     public Response getUserByName(String name,Integer age) {
-//        UserDao mapper = sqlManager.getMapper(UserDao.class);
-//        List<User> userList = mapper.all();
-//            return Response.success(userList);
         List<User> userList = userMapper.all();
         System.out.println(userList);
-
-
             return null;
         }
 
