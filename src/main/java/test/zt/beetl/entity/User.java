@@ -1,23 +1,23 @@
 package test.zt.beetl.entity;
 
-import lombok.*;
 
-import java.util.Date;
+import lombok.Data;
+import org.beetl.sql.annotation.entity.AutoID;
+import org.beetl.sql.annotation.entity.Table;
+
 
 /**
  * @author zangtao
  * @date 2020/1/2 10:01
  */
+
+@Table(name="user")
 @Data
-@Builder
-@AllArgsConstructor
-@NoArgsConstructor
-@EqualsAndHashCode
 public class User {
+    @AutoID
     private Integer id;
-    private Integer age;
     private String name;
-    private Integer departmentId;
-    private Date createDate;
-    private Short delFlag;
+    private Integer age;
+
+   
 }

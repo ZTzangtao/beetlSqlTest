@@ -1,6 +1,8 @@
 package test.zt.beetl.web;
 
+import org.beetl.sql.starter.CodeGenController;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.web.bind.annotation.*;
 import test.zt.beetl.base.Response;
 import test.zt.beetl.entity.User;
@@ -26,6 +28,6 @@ public class BeetlSqlController {
     public Response getUserByName(@RequestParam(value = "name") String name,
                                   @RequestParam(required = false,value = "age") Integer age){
         return userService.getUserByName(name,age);
-    }
+}
 
 }

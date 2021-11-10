@@ -1,10 +1,7 @@
 package test.zt.beetl.config;
 
 
-import com.ibeetl.starter.BeetlSqlMutipleSourceCustomize;
 import com.zaxxer.hikari.HikariDataSource;
-import org.beetl.sql.core.DefaultConnectionSource;
-import org.beetl.sql.core.SQLManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
@@ -51,18 +48,6 @@ public class DataSourceConfig {
         return ds;
     }
 
-    @Bean
-    public BeetlSqlMutipleSourceCustomize beetlSqlCustomize() {
-        return new BeetlSqlMutipleSourceCustomize() {
-            @Override
-            public void customize(String dataSource, SQLManager sqlManager) {
-                if(dataSource.equals("a")){
-                    DefaultConnectionSource defaultConnectionSource = (DefaultConnectionSource)sqlManager.getDs();
-                    DataSource slave = (DataSource)ctx.getBean("a-1");
-                    defaultConnectionSource.setSlaves(new DataSource[]{slave});
-                }
-            }
-        };
-    }
+
 
 }
