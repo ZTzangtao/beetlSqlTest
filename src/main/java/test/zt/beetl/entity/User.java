@@ -1,6 +1,7 @@
 package test.zt.beetl.entity;
 
 
+import lombok.Builder;
 import lombok.Data;
 import org.beetl.sql.annotation.entity.AutoID;
 import org.beetl.sql.annotation.entity.Table;

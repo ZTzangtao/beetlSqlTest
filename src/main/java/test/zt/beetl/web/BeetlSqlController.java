@@ -25,7 +25,7 @@ public class BeetlSqlController {
     }
 
     @GetMapping("user")
-    public Response getUserByName(@RequestParam(value = "name") String name,
+    public Response getUserByName(@RequestParam(required = false, value = "name") String name,
                                   @RequestParam(required = false,value = "age") Integer age){
         return userService.getUserByName(name,age);
 }

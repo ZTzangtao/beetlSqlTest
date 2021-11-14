@@ -31,9 +31,10 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public Response getUserByName(String name,Integer age) {
-        List<User> userList = userMapper.all();
-        System.out.println(userList);
-            return null;
-        }
-
+        List<User> userList = userMapper.selectUser(name, age);
+//        List<User> userList =  userMapper.all();
+        return Response.success(userList);
     }
+
+
+}
